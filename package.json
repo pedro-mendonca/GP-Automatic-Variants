@@ -1,0 +1,33 @@
+{
+	"requires": true,
+	"lockfileVersion": 1,
+	"name": "gp-automatic-variants",
+	"version": "1.0.0",
+	"description": "Plugin for GlotPress to manage automatically converted variants.",
+	"author": "Pedro Mendonça",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"i18n",
+		"l10n",
+		"GlotPress",
+		"translation",
+		"Portuguese",
+		"AO90"
+	],
+	"homepage": "https://github.com/pedro-mendonca/GP-Automatic-Variants#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pedro-mendonca/GP-Automatic-Variants.git"
+	},
+	"bugs": {
+		"url": "https://github.com/pedro-mendonca/GP-Automatic-Variants/issues"
+	},
+	"devDependencies": {
+      "@wordpress/scripts": "^19.2.2"
+    },
+    "scripts": {
+      "lint:md:docs": "wp-scripts lint-md-docs",
+      "lint:pkg-json": "wp-scripts lint-pkg-json"
+    }
+}

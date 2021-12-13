@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<ruleset name="Automatic Variants for GlotPress PHPCS rule set">
+	<description>Custom set of PHPCS rules for Automatic Variants for GlotPress.</description>
+
+	<!-- Files to check. -->
+	<file>.</file>
+
+	<!-- Exclude paths. -->
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Only scan PHP files. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- The report types to print. -->
+	<arg name="report" value="summary,source,full"/>
+
+	<!-- Show sniff and progress. -->
+	<arg value="sp"/>
+
+	<!-- Strip the file paths down to the relevant bit. -->
+	<arg name="basepath" value="./"/>
+
+	<!-- Check up to 20 files simultaneously. -->
+	<arg name="parallel" value="20"/>
+
+	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
+	<arg name="cache"/>
+
+	<!-- Enable colors in report. -->
+	<arg name="colors"/>
+
+	<!-- Include the WordPress Coding Standards. -->
+	<rule ref="WordPress">
+
+		<exclude name="WordPress.CodeAnalysis.AssignmentInCondition"/>
+		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped"/>
+		<exclude name="WordPress.WP.AlternativeFunctions.file_system_read_fopen"/>
+		<exclude name="WordPress.WP.AlternativeFunctions.file_system_read_fclose"/>
+		<exclude name="WordPress.PHP.DevelopmentFunctions.error_log_print_r"/>
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure"/>
+
+	</rule>
+
+	<rule ref="WordPress.WP.DeprecatedFunctions">
+		<properties>
+			<property name="minimum_supported_version" value="5.3"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<!-- Set the global prefix. -->
+			<property name="prefixes" type="array" value="gp_automatic_variants"/>
+		</properties>
+	</rule>
+
+	<!-- VariableAnalysis. -->
+	<rule ref="VariableAnalysis"/>
+
+</ruleset>
