@@ -1,0 +1,87 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Automatic Variants for GlotPress\n"
+"Report-Msgid-Bugs-To: https://github.com/pedro-mendonca/GP-Automatic-Variants/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: gp-automatic-variants.php\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Pedro Mendonça <ped.gaspar@gmail.com>\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: includes/class-automatic-variants.php:74
+msgid "GlotPress not found. Please install and activate it."
+msgstr ""
+
+#. translators: 1: Version number. 2: Version number.
+#: includes/class-automatic-variants.php:91
+#, php-format
+msgid "Current GlotPress version (%1$s) does not meet minimum requirements. This plugin requires GlotPress %2$s."
+msgstr ""
+
+#. translators: 1: Version number. 2: Version number.
+#: includes/class-automatic-variants.php:112
+#, php-format
+msgid "This plugin <strong>has not been tested</strong> with your current version of GlotPress (%1$s). Tested up to GlotPress %2$s."
+msgstr ""
+
+#. translators: 1: Plugin name. 2: Error message.
+#: includes/class-automatic-variants.php:164
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: includes/class-automatic-variants.php:165
+msgctxt "Plugin name"
+msgid "Automatic Variants for GlotPress"
+msgstr ""
+
+#: includes/class-automatic-variants.php:249
+msgid "The Locale %1$l is not supported by GlotPress %2$s."
+msgid_plural "The Locales %1$l are not supported by GlotPress %2$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-automatic-variants.php:277
+msgid "The Locale %l is not a variant."
+msgid_plural "The Locales %l are not variants."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-automatic-variants.php:310
+msgid "The Locale %l is a read-only automatically converted variant."
+msgid_plural "The Locales %l are read-only automatically converted variants."
+msgstr[0] ""
+msgstr[1] ""
+
+#. Plugin Name of the plugin/theme
+msgid "Automatic Variants for GlotPress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/gp-automatic-variants/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Plugin for GlotPress to manage automatically converted variants."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Pedro Mendonça"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://profiles.wordpress.org/pedromendonca/"
+msgstr ""

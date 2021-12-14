@@ -11,9 +11,7 @@
 		"i18n",
 		"l10n",
 		"GlotPress",
-		"translation",
-		"Portuguese",
-		"AO90"
+		"variants"
 	],
 	"homepage": "https://github.com/pedro-mendonca/GP-Automatic-Variants#readme",
 	"repository": {
@@ -24,10 +22,10 @@
 		"url": "https://github.com/pedro-mendonca/GP-Automatic-Variants/issues"
 	},
 	"devDependencies": {
-      "@wordpress/scripts": "^19.2.2"
-    },
-    "scripts": {
-      "lint:md:docs": "wp-scripts lint-md-docs",
-      "lint:pkg-json": "wp-scripts lint-pkg-json"
-    }
+		"@wordpress/scripts": "^19.2.2"
+	},
+	"scripts": {
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json"
+	}
 }
