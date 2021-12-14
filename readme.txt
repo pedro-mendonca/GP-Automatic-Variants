@@ -44,7 +44,7 @@ Install and activate this plugin from your plugins page.
 
 1. Set the variants you want to be automatically converted with the filter `gp_automatic_variants_list`:
 
-	```php
+	```
 	/**
 	 * Add my automatically converted variants.
 	 */
@@ -66,7 +66,8 @@ Install and activate this plugin from your plugins page.
 2. Add your Locale actual conversion process with the filter `gp_automatic_variants_convert_{variant_locale}`:
 
 	Example for the variant 'pt-ao90':
-	```php
+
+	```
 	/**
 	 * Actual conversion of the string.
 	 */
@@ -77,10 +78,11 @@ Install and activate this plugin from your plugins page.
 	add_filter( 'gp_automatic_variants_convert_pt-ao90', 'convert_translation' );
 	```
 
-=== Usage ===
+== Usage ==
 
-For every translation project, add both root and variant translation sets as usual.
-Translate only on the root Locale and see the conversions automatically propagate to the variant.
+1. For every translation project, add both root and variant translation sets as usual.
+
+2. Translate only on the root Locale and see the conversions automatically propagate to the variant.
 
 == Requirements ==
 
