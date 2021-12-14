@@ -48,39 +48,39 @@ Install and activate this plugin from your plugins page.
 
 1. Set the variants you want to be automatically converted with the filter `gp_automatic_variants_list`:
 
-	```php
-	/**
-	 * Add my automatically converted variants.
-	 */
-	function my_automatic_variants( $locales ) {
-		$additional_locales = array(
-			'ca-valencia',
-			'pt-ao90',
-			'ca-valencia',
-			'en-gb',
-			'de-at',
-			'de-ch',
-		);
-		return array_merge( $locales, $additional_locales );
-	}
+   ```php
+   /**
+    * Add my automatically converted variants.
+    */
+   function my_automatic_variants( $locales ) {
+      $additional_locales = array(
+         'ca-valencia',
+         'pt-ao90',
+         'ca-valencia',
+         'en-gb',
+         'de-at',
+         'de-ch',
+      );
+      return array_merge( $locales, $additional_locales );
+   }
 
-	add_filter( 'gp_automatic_variants_list', 'my_automatic_variants' );
-	```
+   add_filter( 'gp_automatic_variants_list', 'my_automatic_variants' );
+   ```
 
 2. Add your Locale actual conversion process with the filter `gp_automatic_variants_convert_{variant_locale}`:
 
-	Example for the variant 'pt-ao90':
+   Example for the variant 'pt-ao90':
 
-	```php
-	/**
-	 * Actual conversion of the string.
-	 */
-	function convert_translation( $translation ) {
-		return do_something( $translation );
-	}
+   ```php
+   /**
+    * Actual conversion of the string.
+    */
+   function convert_translation( $translation ) {
+      return do_something( $translation );
+   }
 
-	add_filter( 'gp_automatic_variants_convert_pt-ao90', 'convert_translation' );
-	```
+   add_filter( 'gp_automatic_variants_convert_pt-ao90', 'convert_translation' );
+   ```
 
 ## Usage
 
