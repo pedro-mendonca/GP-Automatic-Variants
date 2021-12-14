@@ -493,7 +493,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 				 * Example for the variant 'pt-ao90':
 				 *   add_filter( 'gp_automatic_variants_convert_pt-ao90', 'conversion_callback' );
 				 *   function conversion_callback( $translation ) {
-				 *      // Actual convertion of the string.
+				 *      // Actual conversion of the string.
 				 *      return $converted_translation;
 				 *   }
 				 *

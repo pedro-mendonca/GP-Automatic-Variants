@@ -29,13 +29,62 @@ This plugin was heavily inspired by the [Serbian Latin](https://meta.trac.wordpr
 
 ## Features
 
-* Filter `gp_automatic_variants_list` to add your variant to the array of automatically converted variants.
-* Filter `gp_automatic_variants_convert_{variant_locale}` to process the conversion of strings of the automatic variant.
-* Check for GlotPress minimum requirements.
-* Check if the added Locales are variants supported the installed GlotPress.
-* Convert `current` root translations and add to the variant translation set.
-* Delete variant unused translations instead of keeping as `rejected`, `fuzzy`, `old`.
-* Delete `current` variant translation if a new root translation (same `original_id`) is added and doesn't need conversion.
+* Filter `gp_automatic_variants_list` to add your variant to the array of automatically converted variants.  
+* Filter `gp_automatic_variants_convert_{variant_locale}` to process the conversion of strings of the automatic variant.  
+* Check for GlotPress minimum requirements.  
+* Check if the added Locales are variants supported the installed GlotPress.  
+* Convert `current` root translations and add to the variant translation set.  
+* Delete variant unused translations instead of keeping as `rejected`, `fuzzy`, `old`.  
+* Delete `current` variant translation if a new root translation (same `original_id`) is added and doesn't need conversion.  
+
+## Installation
+
+### Install GlotPress
+
+Install and activate GlotPress 3.0.0-alpha minimum version.
+Install and activate this plugin from your plugins page.
+
+### Configure Automatic Variants for GlotPress
+
+1. Set the variants you want to be automatically converted with the filter `gp_automatic_variants_list`:
+
+	```php
+	/**
+	 * Add my automatically converted variants.
+	 */
+	function my_automatic_variants( $locales ) {
+		$additional_locales = array(
+			'ca-valencia',
+			'pt-ao90',
+			'ca-valencia',
+			'en-gb',
+			'de-at',
+			'de-ch',
+		);
+		return array_merge( $locales, $additional_locales );
+	}
+
+	add_filter( 'gp_automatic_variants_list', 'my_automatic_variants' );
+	```
+
+2. Add your Locale actual conversion process with the filter `gp_automatic_variants_convert_{variant_locale}`:
+
+	Example for the variant 'pt-ao90':
+	```php
+	/**
+	 * Actual conversion of the string.
+	 */
+	function convert_translation( $translation ) {
+		return do_something( $translation );
+	}
+
+	add_filter( 'gp_automatic_variants_convert_pt-ao90', 'convert_translation' );
+	```
+
+### Usage
+
+For every translation project, add both root and variant translation sets as usual.
+Translate only on the root Locale and see the conversions automatically propagate to the variant.
 
 ## Requirements
 
@@ -51,7 +100,7 @@ If a translation doesn't exist on the variant, it assumes its root translation.
 This plugin links both Locales in a way that you only need to focus in translating and manage consistency on the root, knowing that the variant is being automatically converted and synced with no human action needed.  
 With this tool, the translators can continue to provide both Locales with the minimum effort.  
 
-### Does this means that translations it's possible to have automatically converted variants on translate.wp.org?
+### Does translate.wp.org supports automatically converted variants?
 
 No(t yet). This is a working proof of concept, it works on any GlotPress 3.x, but isn't running on [translate.wp.org](https://translate.wp.org) (GlotPress based) at the moment.  
 
