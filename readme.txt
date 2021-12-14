@@ -37,8 +37,9 @@ This plugin was heavily inspired by the [Serbian Latin](https://meta.trac.wordpr
 
 === Install GlotPress ===
 
-Install and activate GlotPress 3.0.0-alpha minimum version.
-Install and activate this plugin from your plugins page.
+1. Install and activate GlotPress 3.0.0-alpha minimum version.
+
+2. Install and activate this plugin from your plugins page.
 
 === Configure Automatic Variants for GlotPress ===
 
