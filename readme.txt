@@ -45,7 +45,7 @@ This plugin was heavily inspired by the [Serbian Latin](https://meta.trac.wordpr
 
 1. Set the variants you want to be automatically converted with the filter `gp_automatic_variants_list`:
 
-	```
+	~~~
 	/**
 	 * Add my automatically converted variants.
 	 */
@@ -62,13 +62,13 @@ This plugin was heavily inspired by the [Serbian Latin](https://meta.trac.wordpr
 	}
 
 	add_filter( 'gp_automatic_variants_list', 'my_automatic_variants' );
-	```
+	~~~
 
 2. Add your Locale actual conversion process with the filter `gp_automatic_variants_convert_{variant_locale}`:
 
 	Example for the variant 'pt-ao90':
 
-	```
+	~~~
 	/**
 	 * Actual conversion of the string.
 	 */
@@ -77,7 +77,7 @@ This plugin was heavily inspired by the [Serbian Latin](https://meta.trac.wordpr
 	}
 
 	add_filter( 'gp_automatic_variants_convert_pt-ao90', 'convert_translation' );
-	```
+	~~~
 
 == Usage ==
 
