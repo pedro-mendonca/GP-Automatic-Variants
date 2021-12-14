@@ -24,7 +24,7 @@
   "config": {
     "optimize-autoloader": true
   },
-    "scripts": {
+  "scripts": {
     "lint": [
       "@lint:php",
       "@compat:php",
@@ -59,12 +59,6 @@
     "lint:pkg-json": "Run npm package.json linter.",
     "scripts-list": "List all Composer scripts.",
     "zip": "Build production zip archive."
-  },
-  "archive": {
-    "exclude": [
-      "composer.*",
-      "!/vendor"
-    ]
   },
   "funding": [
     {
