@@ -3,7 +3,7 @@ name: Plugin Asset/Readme Update
 on:
   push:
     branches:
-    - master
+    - main
     paths:
       # Any change on the WordPress.org plugin repository-specific assets that belong in the top-level assets directory.
       - '.wordpress-org/**'
