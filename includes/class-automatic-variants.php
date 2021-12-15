@@ -56,6 +56,11 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 			 */
 			add_action( 'gp_translation_saved', array( self::class, 'queue_translation_for_conversion' ) );
 
+			/**
+			 * Add extra info to automatic variants translation sets.
+			 */
+			add_action( 'gp_project_template_translation_set_extra', array( self::class, 'translation_set_extra_info' ) );
+
 		}
 
 
@@ -330,6 +335,44 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 
 
 		/**
+		 * Check if a Variant is automatically converted.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param string $locale   Locale.
+		 *
+		 * @return bool
+		 */
+		public static function is_automatic_variant( $locale = null ) {
+
+			// Check provided Locale.
+			if ( null === $locale ) {
+				return false;
+			}
+
+			// Get automatically converted variants.
+			$automatic_variants = self::get_automatic_variants();
+
+			// Check for automatic variants.
+			if ( empty( $automatic_variants ) ) {
+				return false;
+			}
+
+			// Check multiple variants per each root.
+			foreach ( $automatic_variants as $roots ) {
+				foreach ( $roots as $variant ) {
+					if ( $locale === $variant ) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+
+		}
+
+
+		/**
 		 * Converts the translation string to the variant translation set.
 		 *
 		 * @since 1.0.0
@@ -385,6 +428,29 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 
 
 		/**
+		 * Add extra info to automatic variants translation sets.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param object $translation_set   \GP_Translation_Set GlotPress translation set.
+		 *
+		 * @return void
+		 */
+		public static function translation_set_extra_info( $translation_set ) {
+
+			// Only process on the automatic variants translation sets.
+			if ( ! $translation_set || ! self::is_automatic_variant( $translation_set->locale ) || 'default' !== $translation_set->slug ) { // @phpstan-ignore-line
+				return;
+			}
+
+			?>
+			<span class="read-only-variant"><?php esc_html_e( 'Read-only', 'gp-automatic-variants' ); ?></span>
+			<?php
+
+		}
+
+
+		/**
 		 * Create translation on the variant set, if the conversion changes the root translation.
 		 * Also deletes any previous variant set translation if the new translation remains unchanged with the conversion.
 		 *
@@ -394,7 +460,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 		 * @param object $project       \GP_Project  GlotPress project.
 		 * @param object $variant_set   \GP_Translation_Set  GlotPress translation set of the variant.
 		 *
-		 * @return void
+		 * @return bool   True if create, false if don't create.
 		 */
 		public static function create( $translation, $project, $variant_set ) {
 
@@ -403,20 +469,22 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 			// Check if the conversion produces changes.
 			if ( ! $translation_changed ) {
 
-				// Deletes any existent mathing conversions.
+				// Deletes any existent matching conversions.
 				self::delete( $translation, $project, $variant_set, false );
 
-				return;
+				return false;
 
 			}
 
 			// Add converted translation to the variant translation set and set as current.
 			$variant_translation = GP::$translation->create( $translation_changed ); // @phpstan-ignore-line
 			if ( ! $variant_translation ) {
-				return;
+				return false;
 			}
 
 			gp_clean_translation_set_cache( $variant_set->id ); // @phpstan-ignore-line
+
+			return true;
 
 		}
 
