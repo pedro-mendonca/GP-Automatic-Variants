@@ -515,7 +515,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 				return;
 			}
 
-			if ( isset( $bulk['row-ids'] ) ) {
+			if ( ! isset( $bulk['row-ids'] ) ) {
 				return;
 			}
 
@@ -524,8 +524,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 
 			foreach ( $bulk['row-ids'] as $row_id ) {
 
-				$translation_id = gp_array_get( explode( '-', $row_id ), 1 ); // @phpstan-ignore-line
-				$translation    = GP::$translation->get( $translation_id ); // @phpstan-ignore-line
+				$translation_id = gp_array_get( explode( '-', $row_id ), 1 );
+				$translation    = GP::$translation->get( $translation_id );
 
 				if ( ! $translation ) {
 					continue;
