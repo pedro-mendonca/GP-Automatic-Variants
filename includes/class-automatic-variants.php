@@ -488,18 +488,10 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 		 *
 		 * @since 1.0.1
 		 *
-		 * @param object                $project           \GP_Project  GlotPress project.
-		 * @param object                $locale            \GP_Locale  GlotPress Locale.
-		 * @param object                $translation_set   \GP_Translation_Set  GlotPress translation set of the variant.
-		 * @param array<string, string> $bulk              {
-		 *     The bulk action data, read from the POST.
-		 *
-		 *     @type string $action      Action value chosen from the drop down menu.
-		 *     @type string $priority    The selected value from the priority drop down menu.
-		 *     @type string $redirect_to The URL that after the bulk actions are executed the
-		 *                               browser is redirected to.
-		 *     @type array  $row-ids     An array of strings of row IDs.
-		 * }
+		 * @param object                                                                                 $project          \GP_Project  GlotPress project.
+		 * @param object                                                                                 $locale           \GP_Locale  GlotPress Locale.
+		 * @param object                                                                                 $translation_set  \GP_Translation_Set  GlotPress translation set of the variant.
+		 * @param array{action: string, priority: int, redirect_to: string, row-ids: array<int, string>} $bulk             An array with the bulk data.
 		 *
 		 * @return void
 		 */
@@ -516,17 +508,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 				return;
 			}
 
-			if ( ! isset( $bulk['row-ids'] ) ) {
-				return;
-			}
-
 			$converted     = 0;
 			$not_converted = 0;
 
 			foreach ( $bulk['row-ids'] as $row_id ) {
 
-				$translation_id = gp_array_get( explode( '-', $row_id ), 1 );
-				$translation    = GP::$translation->get( $translation_id );
+				$translation_id = gp_array_get( explode( '-', $row_id ), 1 ); // @phpstan-ignore-line
+				$translation    = GP::$translation->get( $translation_id ); // @phpstan-ignore-line
 
 				if ( ! $translation ) {
 					continue;
