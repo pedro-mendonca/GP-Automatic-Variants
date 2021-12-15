@@ -129,4 +129,7 @@ Automatic_Variants::init();
  *  - Mark Locale (Locales list and Translation Set list) as read-only and automatically converted.
  *  - Set variant as read-only.
  *  - Use GlotPress stubs.
+ *  - Remove unnecessary success admin notices.
+ *  - Add context to translation (https://wordpress.slack.com/archives/C02RP4R9F/p1639562274242400?thread_ts=1639558466.231500&cid=C02RP4R9F)
+ *  - Add custom variants with hook (https://wordpress.slack.com/archives/C02RP4R9F/p1639561977241400?thread_ts=1639558466.231500&cid=C02RP4R9F)
  */

@@ -507,6 +507,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 
 			/**
 			* TODO: Always try to convert from the root, if tries to convert from a previously converted and current, stays unchanged and the variant is deleted.
+			* TODO: Notice: translation don't need conversion / Converted translation deleted.
 			*/
 
 			$action = $bulk['action'];
