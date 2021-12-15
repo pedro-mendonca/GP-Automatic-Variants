@@ -61,6 +61,16 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 			 */
 			add_action( 'gp_project_template_translation_set_extra', array( self::class, 'translation_set_extra_info' ) );
 
+			/**
+			 * Add Convert to bulk actions for automatic variants.
+			 */
+			add_action( 'gp_translation_set_bulk_action', array( self::class, 'bulk_action_convert_variant' ) );
+
+			/**
+			 * Bulk convert selected translations on automatic variants.
+			 */
+			add_action( 'gp_translation_set_bulk_action_post', array( self::class, 'bulk_action_post_convert_variant' ), 10, 4 );
+
 		}
 
 
@@ -446,6 +456,130 @@ if ( ! class_exists( __NAMESPACE__ . '\Automatic_Variants' ) ) {
 			?>
 			<span class="read-only-variant"><?php esc_html_e( 'Read-only', 'gp-automatic-variants' ); ?></span>
 			<?php
+
+		}
+
+
+		/**
+		 * Add Convert bulk action option.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param object $translation_set   \GP_Translation_Set GlotPress translation set.
+		 *
+		 * @return void
+		 */
+		public static function bulk_action_convert_variant( $translation_set ) {
+
+			// Only process on the automatic variants translation sets.
+			if ( ! $translation_set || ! self::is_automatic_variant( $translation_set->locale ) || 'default' !== $translation_set->slug ) { // @phpstan-ignore-line
+				return;
+			}
+
+			?>
+			<option value="convert-variant"><?php echo esc_attr_x( 'Convert', 'Action', 'gp-automatic-variants' ); ?></option>
+			<?php
+
+		}
+
+
+		/**
+		 * Add Convert bulk action option.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param object                $project           \GP_Project  GlotPress project.
+		 * @param object                $locale            \GP_Locale  GlotPress Locale.
+		 * @param object                $translation_set   \GP_Translation_Set  GlotPress translation set of the variant.
+		 * @param array<string, string> $bulk              {
+		 *     The bulk action data, read from the POST.
+		 *
+		 *     @type string $action      Action value chosen from the drop down menu.
+		 *     @type string $priority    The selected value from the priority drop down menu.
+		 *     @type string $redirect_to The URL that after the bulk actions are executed the
+		 *                               browser is redirected to.
+		 *     @type array  $row-ids     An array of strings of row IDs.
+		 * }
+		 *
+		 * @return void
+		 */
+		public static function bulk_action_post_convert_variant( $project, $locale, $translation_set, $bulk ) {
+
+			/**
+			* TODO: Always try to convert from the root, if tries to convert from a previously converted and current, stays unchanged and the variant is deleted.
+			*/
+
+			$action = $bulk['action'];
+
+			if ( 'convert-variant' !== $action ) {
+				return;
+			}
+
+			if ( isset( $bulk['row-ids'] ) ) {
+				return;
+			}
+
+			$converted     = 0;
+			$not_converted = 0;
+
+			foreach ( $bulk['row-ids'] as $row_id ) {
+
+				$translation_id = gp_array_get( explode( '-', $row_id ), 1 ); // @phpstan-ignore-line
+				$translation    = GP::$translation->get( $translation_id ); // @phpstan-ignore-line
+
+				if ( ! $translation ) {
+					continue;
+				}
+
+				if ( self::create( $translation, $project, $translation_set ) ) {
+					$converted++;
+				} else {
+					$not_converted++;
+				}
+			}
+
+			$notices = array();
+
+			if ( 0 === $not_converted ) {
+
+				$notices[] = sprintf(
+					/* translators: 1: Translations count. 2: Translation set name. */
+					_n( '%1$d translation was converted to %2$s.', '%1$d translations were converted to %2$s.', $converted, 'gp-automatic-variants' ),
+					$converted,
+					$translation_set->name // @phpstan-ignore-line
+				);
+
+			} else {
+
+				if ( $converted > 0 ) {
+
+					$message = sprintf(
+						/* translators: %s: Translations count. */
+						_n( '%d translation was not converted.', '%d translations were not converted.', $not_converted, 'gp-automatic-variants' ),
+						$not_converted
+					);
+					$message .= ' ';
+					$message .= sprintf(
+						/* translators: 1: Translations count. 2: Translation set name. */
+						_n( 'The remaining %1$d translation was converted successfully to %2$s.', 'The remaining %1$d translations were converted successfully to %2$s.', $converted, 'gp-automatic-variants' ),
+						$converted,
+						$translation_set->name // @phpstan-ignore-line
+					);
+					$notices[] = $message;
+
+				} else {
+
+					$notices[] = sprintf(
+						/* translators: %s: Translations count. */
+						_n( '%d translation was not converted.', '%d translations were not converted.', $not_converted, 'gp-automatic-variants' ),
+						$not_converted
+					);
+				}
+			}
+
+			foreach ( $notices as $notice ) {
+				gp_notice_set( $notice ); // @phpstan-ignore-line
+			}
 
 		}
 
