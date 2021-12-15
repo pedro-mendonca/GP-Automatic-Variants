@@ -13,7 +13,7 @@ Plugin for GlotPress to manage automatically converted variants.
 
 [![Coding Standards](https://github.com/pedro-mendonca/GP-Automatic-Variants/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/pedro-mendonca/GP-Automatic-Variants/actions/workflows/coding-standards.yml)
 [![Static Analysis](https://github.com/pedro-mendonca/GP-Automatic-Variants/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/pedro-mendonca/GP-Automatic-Variants/actions/workflows/static-analysis.yml)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/545e6b6d121a439498a0d16f72c93851)](https://www.codacy.com/gh/pedro-mendonca/GP-Automatic-Variants/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pedro-mendonca/GP-Automatic-Variants&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2cad4d87afb54a1fac7a0e06d1058256)](https://www.codacy.com/gh/pedro-mendonca/GP-Automatic-Variants/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pedro-mendonca/GP-Automatic-Variants&amp;utm_campaign=Badge_Grade)
 
 ## Description
 
