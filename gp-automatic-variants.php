@@ -128,4 +128,5 @@ Automatic_Variants::init();
  *  - Notice to identify that the Locale is read-only and automatically managed.
  *  - Mark Locale (Locales list and Translation Set list) as read-only and automatically converted.
  *  - Set variant as read-only.
+ *  - Use GlotPress stubs.
  */
