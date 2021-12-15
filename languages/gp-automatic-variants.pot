@@ -21,48 +21,82 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: includes/class-automatic-variants.php:74
+#: includes/class-automatic-variants.php:89
 msgid "GlotPress not found. Please install and activate it."
 msgstr ""
 
 #. translators: 1: Version number. 2: Version number.
-#: includes/class-automatic-variants.php:91
+#: includes/class-automatic-variants.php:106
 #, php-format
 msgid "Current GlotPress version (%1$s) does not meet minimum requirements. This plugin requires GlotPress %2$s."
 msgstr ""
 
 #. translators: 1: Version number. 2: Version number.
-#: includes/class-automatic-variants.php:112
+#: includes/class-automatic-variants.php:127
 #, php-format
 msgid "This plugin <strong>has not been tested</strong> with your current version of GlotPress (%1$s). Tested up to GlotPress %2$s."
 msgstr ""
 
 #. translators: 1: Plugin name. 2: Error message.
-#: includes/class-automatic-variants.php:164
+#: includes/class-automatic-variants.php:179
 #, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: includes/class-automatic-variants.php:165
+#: includes/class-automatic-variants.php:180
 msgctxt "Plugin name"
 msgid "Automatic Variants for GlotPress"
 msgstr ""
 
-#: includes/class-automatic-variants.php:249
+#: includes/class-automatic-variants.php:264
 msgid "The Locale %1$l is not supported by GlotPress %2$s."
 msgid_plural "The Locales %1$l are not supported by GlotPress %2$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-automatic-variants.php:277
+#: includes/class-automatic-variants.php:292
 msgid "The Locale %l is not a variant."
 msgid_plural "The Locales %l are not variants."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-automatic-variants.php:310
+#: includes/class-automatic-variants.php:325
 msgid "The Locale %l is a read-only automatically converted variant."
 msgid_plural "The Locales %l are read-only automatically converted variants."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-automatic-variants.php:453
+msgid "Read-only"
+msgstr ""
+
+#: includes/class-automatic-variants.php:474
+msgctxt "Action"
+msgid "Convert"
+msgstr ""
+
+#. translators: 1: Translations count. 2: Translation set name.
+#: includes/class-automatic-variants.php:535
+#, php-format
+msgid "%1$d translation was converted to %2$s."
+msgid_plural "%1$d translations were converted to %2$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Translations count.
+#: includes/class-automatic-variants.php:544
+#: includes/class-automatic-variants.php:560
+#, php-format
+msgid "%d translation was not converted."
+msgid_plural "%d translations were not converted."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: Translations count. 2: Translation set name.
+#: includes/class-automatic-variants.php:550
+#, php-format
+msgid "The remaining %1$d translation was converted successfully to %2$s."
+msgid_plural "The remaining %1$d translations were converted successfully to %2$s."
 msgstr[0] ""
 msgstr[1] ""
 
