@@ -17,6 +17,7 @@
  * Plugin Name:       Automatic Variants for GlotPress
  * Plugin URI:        https://wordpress.org/plugins/gp-automatic-variants/
  * GitHub Plugin URI: https://github.com/pedro-mendonca/GP-Automatic-Variants
+ * Primary Branch:    main
  * Description:       Plugin for GlotPress to manage automatically converted variants.
  * Version:           1.0.0
  * Requires at least: 5.3
