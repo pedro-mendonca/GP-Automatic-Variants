@@ -87,7 +87,7 @@ This plugin was heavily inspired by the [Serbian Latin](https://meta.trac.wordpr
 
 == Requirements ==
 
-*   GlotPress 3.0.0-alpha
+*   [GlotPress 3.0.0-alpha](https://github.com/GlotPress/GlotPress/releases/tag/3.0.0-alpha.4) with Variants support.
 
 == Frequently Asked Questions ==
 
@@ -108,6 +108,10 @@ Depending on how the translation team decides to work. It's useful if automatic 
 For teams that want a root/variant to work automatically, GlotPress could integrate this optional feature of setting a specific variant to be automatically converted from its root with a custom hookable process, and turning the variant read-only.
 This can be used by any Locale team that want to hook an automatic conversion between root and variant Locales.
 This plugin is intended to be a proof of concept to use and test this workflow.
+
+= What versions of GlotPress are compatible with this plugin?
+The Variants feature was introduced in [GlotPress 3.0.0-alpha](https://github.com/GlotPress/GlotPress/releases/tag/3.0.0-alpha.4).
+Later, on [GlotPress 3.0.0-beta](https://github.com/GlotPress/GlotPress/releases/tag/3.0.0-beta.1) the Variants feature [was removed temporarily](https://github.com/GlotPress/GlotPress/pull/1327), so for now the GlotPress alpha version is the only Variants compatible version, and you must install it for this plugin to do its magic.
 
 = Can I contribute to this plugin? =
 Sure! You are welcome to report any issues or add feature suggestions on the [GitHub repository](https://github.com/pedro-mendonca/GP-Automatic-Variants).
