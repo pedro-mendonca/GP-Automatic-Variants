@@ -15,9 +15,9 @@ Plugin for GlotPress to manage automatically converted variants.
 
 This plugin for GlotPress customizes the default behavior of a set of chosen pairs of Locales (root/variant), allowing you to automatically convert the approved/current strings in the root to its variant.
 
-Keep the root translations and the variant translations automatically converted and synced in your GlotPress install.
+It keeps the root translations and the variant translations automatically converted and synced in your GlotPress install.
 
-Only translations whose conversion are different from the original root translation are added to the variant translation set.
+The only translations added to the variant translation set are those which are different from the root translation.
 
 The strings that don't need any conversion remain untranslated on the variant, falling back to the root Locale.
 
